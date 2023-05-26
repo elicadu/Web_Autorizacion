@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="icon" href="img/ICONO-AZUL.png">
+    <link rel="stylesheet" href="Css/styles.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+
+</head>
+
+<body>
+
+    <div class="conten_registro" id="conten_registro">
+
+        <div class="registro">
+
+                <p class="text" id="text">Ingrese codigo de usuario</p>
+                <p class="text_error" id="text_error"> Este usuario no existe. <br> Inténtelo de nuevo!</p>
+
+                <div class="conte_input">
+                    <input type="number" class="inpt_text" id="id_cedu">
+                </div>
+
+                <div class="conte_btn">
+                    <button class="btn_regis" id="btn_aceptar">Aceptar</button>
+                    <button class="btn_regis" id="btn_cancelar">cancelar</button>
+                </div>
+        </div>
+    </div>
+
+    <section class="section" id="section">
+        <article class="bloq_a">
+            <div class="conten_img">
+                <img src="img/LOGO ORIGINAL.png" id="img_logo" class="img_logo">
+            </div>
+
+        </article>
+
+        <article class="bloq_b">
+
+                <div class="conten_info">
+                    <div class="conten_nomb">
+                        <input type="text" class="nombre" id="nombre_responsable" readonly>
+                    </div>
+                    <div class="conten_fech">
+                        <input type="datetime" name="" class="fecha" id="fecha_responsable" readonly>
+                    </div>
+                    
+                </div>
+                <div class="conten_auto">
+                    <div class="serial">
+                        <p class="serial_tex">Serial</p>
+                        <input type="number" name="id" class="serial_num" id="serial" readonly>
+                    </div>
+                    <div class="conten_inpu">
+                        <input type="number" name="auto" class="auto" id="num_auto" autofocus>
+                    </div>
+                    <div class="conten_buscar">
+                        <button class="buscar" id="buscar_auto" onclick="generarURL()">Buscar</button>
+                    </div>
+                </div>
+
+                <div class="conten_butt">
+
+                    <div class="subconten_butt">
+
+                        <button class="button" id="buscar_atr" onclick="buscar_atras()">Atras</button>
+                        <button class="button" id="buscar_sql" onclick="buscar_auto()">Buscar</button>
+                        <button class="button" id="buscar_sig" onclick="buscar_siguiente()">siguiente</button>
+
+                    </div>
+
+                </div>
+
+        </article>
+
+
+        <article class="bloq_c" id="bloq_c">
+
+            <div class="doc_auto">
+                
+                <div class="conten_print">
+                    <button class="print" id="imprimir_auto">imprimir</button>
+                </div>
+
+                <div class="fortmat_auto" id="fortmat_auto">
+                    <iframe class="pag1" id="myIframe" src="" frameborder="0" width="500" height="500"></iframe>
+                </div>
+
+            </div>
+    
+            <div class="doc_formu">
+                <div class="conten_print">
+                    <!-- <button class="print" id="imprimir_formu">imprimir</button> -->
+                </div>
+    
+                <div class="fortmat_formu" id="fortmat_formu">
+                    <iframe class="pag2" id="myIframe2" src="" frameborder="0"></iframe>
+                </div>
+
+            </div>
+
+        </article>
+    </section>
+    
+
+    <script src="consulta_DB.js"></script>
+    <script src="consulta_api.js"></script>
+
+</body>
+
+</html>
