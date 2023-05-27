@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Logifarma</title>
 
     <link rel="icon" href="img/ICONO-AZUL.png">
     <link rel="stylesheet" href="Css/styles.css">
@@ -28,7 +28,7 @@
                 <p class="text_error" id="text_error"> Este usuario no existe. <br> Inténtelo de nuevo!</p>
 
                 <div class="conte_input">
-                    <input type="number" class="inpt_text" id="id_cedu">
+                    <input type="number" class="inpt_text" id="id_cedu" autofocus>
                 </div>
 
                 <div class="conte_btn">
@@ -50,10 +50,11 @@
 
                 <div class="conten_info">
                     <div class="conten_nomb">
-                        <input type="text" class="nombre" id="nombre_responsable" readonly>
+                        <input type="text" class="nombre" id="nombre_responsable" readonly disabled>
                     </div>
                     <div class="conten_fech">
-                        <input type="datetime" name="" class="fecha" id="fecha_responsable" readonly>
+                        <input type="datetime" name="" class="fecha" id="fecha_responsable" readonly disabled>
+                        <input type="datetime" name="" class="hora" id="hora_responsable" readonly disabled>
                     </div>
                     
                 </div>
@@ -63,7 +64,7 @@
                         <input type="number" name="id" class="serial_num" id="serial" readonly>
                     </div>
                     <div class="conten_inpu">
-                        <input type="number" name="auto" class="auto" id="num_auto" autofocus>
+                        <input type="number" name="auto" class="auto" id="num_auto" >
                     </div>
                     <div class="conten_buscar">
                         <button class="buscar" id="buscar_auto" onclick="generarURL()">Buscar</button>

@@ -10,14 +10,32 @@ function buscar_auto() {
       const nombre = data.alistado_por; 
       const fecha = data.alistamiento;
 
-      console.log(nombre);
-      console.log(fecha);
+      const fechaHora = new Date(fecha);
+
+      const hora = fechaHora.getHours();
+      const minutos = fechaHora.getMinutes();
+      const segundos = fechaHora.getSeconds();
+      const horaFormateada = hora + ":" + minutos + ":" + segundos;
+
+      const dia = fechaHora.getDate();
+      const mes = fechaHora.getMonth() + 1;
+      const anio = fechaHora.getFullYear();
+      const fechaFormateada = dia + "/" + mes + "/" + anio;
+
+      if (nombre == null && fecha == null) {
+
+      document.getElementById('nombre_responsable').value = "No Impreso";
+        
+      } else {
+
+      document.getElementById('nombre_responsable').value = nombre;
+      document.getElementById('fecha_responsable').value = fechaFormateada;
+      document.getElementById('hora_responsable').value = horaFormateada;
+      }
+
 
       document.getElementById('serial').value = id;
       document.getElementById('num_auto').value = radicado;
-      document.getElementById('nombre_responsable').value = nombre;
-      document.getElementById('fecha_responsable').value = fecha;
-      
 
       const a = radicado.slice(-8);
       const b = radicado.slice(0, -8);
@@ -71,8 +89,9 @@ const imprimirBtn = document.getElementById('imprimir_auto').addEventListener('c
 function impri(){
   
   const auto = document.getElementById('num_auto').value;
+  document.getElementById('id_cedu').value = "";
 
-  if (auto > 10000000000 && auto < 1000000000000) {
+  if (auto > 10000000 && auto < 10000000000000) {
 
     const modal = document.getElementById('conten_registro');
   const sect = document.getElementById('section');
@@ -124,6 +143,7 @@ function impri(){
 
     });
 
+
   };
 
   document.getElementById('btn_cancelar').addEventListener('click', cancelar);
@@ -155,8 +175,6 @@ function impri(){
 function buscar_siguiente() {
 
   const id_serie = document.getElementById('serial').value;
-  document.getElementById('nombre_responsable').value = "";
-  document.getElementById('fecha_responsable').value = "";
 
   // Realizar la solicitud POST al servidor
   fetch(`/consulta?id_serie=${id_serie}`)
@@ -165,9 +183,39 @@ function buscar_siguiente() {
     // Hacer algo con los datos recibidos
     const id = data.id;
     const radicado = data.numero_radicado;
+    const nombre = data.alistado_por; 
+    const fecha = data.alistamiento;
+
+    console.log(nombre);
+    console.log(fecha);
 
     document.getElementById('serial').value = id;
     document.getElementById('num_auto').value = radicado;
+
+      const fechaHora = new Date(fecha);
+
+      const hora = fechaHora.getHours();
+      const minutos = fechaHora.getMinutes();
+      const segundos = fechaHora.getSeconds();
+      const horaFormateada = hora + ":" + minutos + ":" + segundos;
+
+      const dia = fechaHora.getDate();
+      const mes = fechaHora.getMonth() + 1;
+      const anio = fechaHora.getFullYear();
+      const fechaFormateada = dia + "/" + mes + "/" + anio;
+
+      if (nombre == null && fecha == null) {
+
+        document.getElementById('nombre_responsable').value = "No Impreso";
+      document.getElementById('fecha_responsable').value = "";
+      document.getElementById('hora_responsable').value = "";
+        
+      } else {
+
+      document.getElementById('nombre_responsable').value = nombre;
+      document.getElementById('fecha_responsable').value = fechaFormateada;
+      document.getElementById('hora_responsable').value = horaFormateada;
+      }
 
     const a = radicado.slice(-8);
     const b = radicado.slice(0, -8);
@@ -231,9 +279,36 @@ function buscar_atras() {
     // Hacer algo con los datos recibidos
     const id = data.id;
     const radicado = data.numero_radicado;
+    const nombre = data.alistado_por; 
+    const fecha = data.alistamiento;
 
     document.getElementById('serial').value = id;
     document.getElementById('num_auto').value = radicado;
+
+    const fechaHora = new Date(fecha);
+
+      const hora = fechaHora.getHours();
+      const minutos = fechaHora.getMinutes();
+      const segundos = fechaHora.getSeconds();
+      const horaFormateada = hora + ":" + minutos + ":" + segundos;
+
+      const dia = fechaHora.getDate();
+      const mes = fechaHora.getMonth() + 1;
+      const anio = fechaHora.getFullYear();
+      const fechaFormateada = dia + "/" + mes + "/" + anio;
+
+      if (nombre == null && fecha == null) {
+
+        document.getElementById('nombre_responsable').value = "No Impreso";
+      document.getElementById('fecha_responsable').value = "";
+      document.getElementById('hora_responsable').value = "";
+        
+      } else {
+
+      document.getElementById('nombre_responsable').value = nombre;
+      document.getElementById('fecha_responsable').value = fechaFormateada;
+      document.getElementById('hora_responsable').value = horaFormateada;
+      }
 
     const a = radicado.slice(-8);
     const b = radicado.slice(0, -8);

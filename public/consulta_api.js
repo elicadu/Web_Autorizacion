@@ -1,8 +1,12 @@
 function generarURL() {
 
+      document.getElementById('nombre_responsable').value = "";
+      document.getElementById('fecha_responsable').value = "";
+      document.getElementById('hora_responsable').value = "";
+
   const auto = document.getElementById('num_auto').value;
 
-  if (auto > 100000000 && auto < 1000000000000) {
+  if (auto > 10000000 && auto < 10000000000000) {
 
     const numero = document.getElementById("num_auto").value;
     const a = numero.slice(-8);
