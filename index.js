@@ -36,8 +36,6 @@ app.get('/consulta', async (req, res) => {
     const datos = result.rows[0]; // Suponiendo que solo quieres el primer resultado de la consulta
     
     res.json(datos);
-
-    console.log(datos);
   } catch (error) {        
     console.error('Error:', error);
     res.status(500).json({ error: 'Error al obtener los datos' });
