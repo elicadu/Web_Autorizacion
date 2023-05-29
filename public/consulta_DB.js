@@ -84,6 +84,10 @@ function buscar_auto() {
     });
 };
 
+
+/* -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- */
+
+
 const imprimirBtn = document.getElementById('imprimir_auto').addEventListener('click', impri);
 
 function impri(){
@@ -91,15 +95,27 @@ function impri(){
   const auto = document.getElementById('num_auto').value;
   document.getElementById('id_cedu').value = "";
 
+
+
   if (auto > 10000000 && auto < 10000000000000) {
 
     const modal = document.getElementById('conten_registro');
   const sect = document.getElementById('section');
+  const inputfocus = document.getElementById('id_cedu');
 
   modal.style.display = 'flex';
   sect.style.opacity = '0.4';
+  inputfocus.focus();
 
   document.getElementById('btn_aceptar').addEventListener('click', aceptar);
+
+  const inputcode = document.getElementById('id_cedu');
+  inputcode.addEventListener('input', function(){
+    const valor = inputcode.value;
+    if(/^\d{3}$/.test(valor)){
+      aceptar();
+    }
+  })
 
   let impreso = false;
 
@@ -126,11 +142,13 @@ function impri(){
         sect.style.opacity = '1';
 
         fetch(`/update?nombre=${nombre}&auto=${auto}`)
-      .then(response => response.json());
-
+        .then(response => response.json());
+        
         if (!impreso) {
-          window.print();
-          impreso = true;
+          if (impreso === false) {
+            impreso = true;
+            window.print();
+          }
         }
       
       }else{
@@ -172,6 +190,14 @@ function impri(){
 };
 
 
+/* -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- */
+
+document.addEventListener('keydown', function(event){
+  if (event.keyCode == 39) {
+    buscar_siguiente();
+  }
+})
+
 function buscar_siguiente() {
 
   const id_serie = document.getElementById('serial').value;
@@ -185,9 +211,6 @@ function buscar_siguiente() {
     const radicado = data.numero_radicado;
     const nombre = data.alistado_por; 
     const fecha = data.alistamiento;
-
-    console.log(nombre);
-    console.log(fecha);
 
     document.getElementById('serial').value = id;
     document.getElementById('num_auto').value = radicado;
@@ -225,6 +248,8 @@ function buscar_siguiente() {
     const iframe_formu = document.getElementById("myIframe2");
 
     iframe_auto.src = url;
+
+    console.log(url);
 
 const myHeaders = new Headers();
 myHeaders.append("Content-Type", "text/plain");
@@ -267,6 +292,16 @@ fetch("https://genesis.cajacopieps.com/api/api_qr.php", requestOptions)
 
 
 };
+
+
+/* -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- */
+
+
+document.addEventListener('keydown', function(event){
+  if (event.keyCode == 37) {
+    buscar_atras();
+  }
+})
 
 function buscar_atras() {
 
