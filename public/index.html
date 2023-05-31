@@ -75,9 +75,11 @@
 
                     <div class="subconten_butt">
 
-                        <button class="button" id="buscar_atr" onclick="buscar_atras()">Atras</button>
-                        <button class="button" id="buscar_sql" onclick="buscar_auto()">Buscar</button>
-                        <button class="button" id="buscar_sig" onclick="buscar_siguiente()">siguiente</button>
+                        <button class="button" id="buscar_primero" ><i class="fas fa-chevron-left"></i><i class="fas fa-chevron-left"></i></button>
+                        <button class="button" id="buscar_atr" onclick="buscar_atras()"><i class="fas fa-chevron-left"></i></button>
+                        <button class="button" id="imprimir_auto"><i class="fas fa-play"></i></button>
+                        <button class="button" id="buscar_sig" onclick="buscar_siguiente()"><i class="fas fa-chevron-right"></i></button>
+                        <button class="button" id="buscar_ultimo" onclick="buscar_ultimo()"><i class="fas fa-chevron-right"></i><i class="fas fa-chevron-right"></i></button>
 
                     </div>
 
@@ -91,7 +93,7 @@
             <div class="doc_auto">
                 
                 <div class="conten_print">
-                    <button class="print1" id="imprimir_auto">imprimir</button>
+                    <!-- <button class="print1" id="imprimir_auto">imprimir</button> -->
                 </div>
 
                 <div class="fortmat_auto" id="fortmat_auto">
@@ -114,7 +116,7 @@
         </article>
     </section>
     
-
+    <script src="https://kit.fontawesome.com/83019c3b17.js" crossorigin="anonymous"></script>
     <script src="consulta_DB.js"></script>
     <script src="consulta_api.js"></script>
 

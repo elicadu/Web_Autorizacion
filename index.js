@@ -56,6 +56,21 @@ app.get('/consulta_atras', async (req, res) => {
   }
 });
 
+app.get('/consulta_ultima', async (req, res) => {
+  const id_serie = req.query.id_serie || 0;
+  try {
+    const query = "SELECT base_radicacion.id, base_radicacion.numero_radicado, base_radicacion.alistamiento, base_radicacion.alistado_por FROM base_radicacion LEFT JOIN domicilios ON base_radicacion.numero_radicado = domicilios.autorizacion WHERE base_radicacion.acta_entrega IS NULL AND domicilios.autorizacion IS NULL AND base_radicacion.id > $1 ORDER BY base_radicacion.datetime DESC LIMIT 1";
+    const result = await client.query(query, [id_serie]);
+    const datos = result.rows[0]; // Suponiendo que solo quieres el primer resultado de la consulta
+
+    res.json(datos);
+  } catch (error) {        
+    console.error('Error:', error);
+    res.status(500).json({ error: 'Error al obtener los datos' });
+  }
+});
+
+
 app.get('/validacion', async (req, res) => {
   const id_cedula = req.query.id_cedula || 0;
   try {
@@ -74,6 +89,7 @@ app.get('/validacion', async (req, res) => {
     res.status(500).json({ error: 'Error al obtener los datos' });
   }
 });
+
 
 app.get('/update', async (req, res) => {
   const nombre = req.query.nombre || '';
