@@ -9,225 +9,338 @@ h1, h2, h3, h4, h5, h6, p, a, span, strong, div, form, select, option, textarea,
     
     html {scroll-behavior: smooth;}
 
-.section {
-    display: block;
-    opacity: 1;
-}
-
-.conten_registro{
-    display: flex;
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    display: none;
-    z-index: 99;
-}
-.registro{
-    position: relative;
-    width: 30%;
-    height: 15%;
-    margin: auto;
-    border: solid 1px;
-    background: #ffff;
-}
-.text{
-    width: 100%;
-    height: 30px;
-    text-align: center;
-    margin: 9px 0px 0px 0;
-    display: block;
-}
-
-.text_error{
-    display: none;
-    width: 100%;
-    height: 39px;
-    text-align: center;
-    margin: 5px 0px 0px 0;
-}
-
-.conte_input{
-    position: relative;
-    width: 100%;
-    height: 47px;
-    display: flex;
-}
-.inpt_text{
-    position: relative;
-    width: 50%;
-    margin: auto;
-}
-.inpt_text::-webkit-inner-spin-button,
-.inpt_text::-webkit-inner-spin-button{
--webkit-appearance: none;
-margin: 0;
-}
-.conte_btn{
+    .section {
+        display: block;
+        opacity: 1;
+        width: 100%;
+    }
+    
+    .conten_registro{
+        display: flex;
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        display: none;
+        z-index: 99;
+    }
+    .registro{
         position: relative;
+        width: 30%;
+        height: 23%;
+        margin: auto;
+        border: solid 1px;
+        background: #ffff;
+    }
+    .text{
         width: 100%;
         height: 30px;
-        display: flex;
+        text-align: center;
         margin: 9px 0px 0px 0;
-}
-.btn_regis{
+        display: block;
+    }
+    
+    .text_error{
+        display: none;
+        width: 100%;
+        height: 39px;
+        text-align: center;
+        margin: 5px 0px 0px 0;
+    }
+    
+    .conte_input{
+        position: relative;
+        width: 100%;
+        height: 47px;
+        display: flex;
+    }
+    .inpt_text{
+        position: relative;
+        width: 50%;
+        margin: auto;
+    }
+    .inpt_text::-webkit-inner-spin-button,
+    .inpt_text::-webkit-inner-spin-button{
+    -webkit-appearance: none;
+    margin: 0;
+    }
+    .conte_btn{
+            position: relative;
+            width: 100%;
+            height: 30px;
+            display: flex;
+            margin: 9px 0px 0px 0;
+    }
+    .btn_regis{
+        margin: auto;
+        position: relative;
+    
+    }
+    
+    .bloq_a {position: relative;
+        width: 100%;
+        height: 6vh;
+        display: flex;
+    }
+    .conten_img{position: relative;
+        width: 11%;
+        height: 80%;}
+    .img_logo{position: relative;
+        width: 100%;
+        height: 100%;}
+    
+    .conten_alistar{display: flex;
+        position: relative;
+        right: -65%;
+        width: 22%;
+        height: 100%;
+    }
+    .alistar{position: relative;
+        width: 100%;
+        height: 45%;
+        display: flex;
+        margin: auto;
+        font-size: 1.3em;
+    }
+    .text_alistar{
     margin: auto;
-    position: relative;
-
-}
-
-.bloq_a {position: relative;
-    width: 100%;
-    height: 7vh;}
-.conten_img{position: relative;
-    width: 16%;
-    height: 100%;}
-.img_logo{position: relative;
-    width: 100%;
-    height: 100%;}
-
-.bloq_b{position: relative;}
-
-.conten_info{
-display: flex;
-position: absolute;
-margin: 7px;
-}
-.conten_nomb{
-    position: relative;
-    width: 30%;
-    height: 3vh;
-}
-.nombre{
-border: solid 0px;
-position: relative;
-    width: 100%;
-    height: 100%;
-    background: #ffff;
-}
-.conten_fech{
-    position: relative;
-    width: 30%;
-    height: 3vh;
-    display: flex;
-}
-
-.fecha{
+    }
+    .alistado_total{
+        position: relative;
+        width: 39px;
+        height: 60%;
+        margin: auto;
+        text-align: center;
+        border: solid 0px;
+        padding: 0;
+        font-size: 21px;
+    }
+    .alistado_total::-webkit-inner-spin-button,
+    .alistado_total::-webkit-inner-spin-button{
+    -webkit-appearance: none;
+    margin: 0;
+    }
+    .alistado_dia{
+        position: relative;
+        width: 31px;
+        height: 55%;
+        margin: auto;
+        text-align: center;
+        border: solid 0px;
+        font-size: 21px;
+    }
+    .alistado_dia::-webkit-inner-spin-button,
+    .alistado_dia::-webkit-inner-spin-button{
+    -webkit-appearance: none;
+    margin: 0;
+    }
+    
+    .bloq_b{position: relative;
+        display: flex;
+        width: 100%;
+        height: 14vh;
+    }
+    
+    .conten_info{display: block;
+        position: relative;
+        margin: 0px;
+        width: 33%;
+    }
+    
+    .conten_fech_solicitud{
+        position: relative;
+        width: 100%;
+        height: 2.5vh;
+        display: flex;
+        margin: 7px 0px 32px 10px;
+        font-size: 1em;
+    }
+    .text_solicitusd{
+        position: relative;
+        width: 35%;
+        font-size: 1.2em;
+        text-align: center;
+    }
+    .fecha_solicitud{
+        position: relative;
+        width: 17%;
+        height: 100%;
+        border: solid 0px;
+        background: #ffff;
+        font-size: 1em;
+    }
+    .hora_solicitud{
+        position: relative;
+        width: 24%;
+        height: 100%;
+        border: solid 0px;
+        background: #ffff;
+        font-size: 1em;
+    }
+    
+    
+    .conten_nomb{
+        position: relative;
+        width: 100%;
+        height: 2.9vh;
+        display: flex;
+        margin: 0 0 0 10px;
+    }
+    .alistado_por{
+        position: relative;
+        width: 26%;
+        font-size: 1.2em;
+        text-align: center;
+    }
+    .nombre{
     border: solid 0px;
     position: relative;
-    width: 50%;
+        width: 24%;
+        height: 100%;
+        background: #ffff;
+        font-size: 1em;
+    }
+    .conten_fech{position: relative;
+        width: 100%;
+        height: 3vh;
+        display: flex;
+        margin: 0 0 0 10px;
+    }
+    .fecha_alistado{position: relative;
+        width: 34%;
+        text-align: center;
+        font-size: 1.2em;
+    }
+    .fecha{border: solid 0px;
+        position: relative;
+        width: 18%;
+        height: 100%;
+        background: #ffff;
+        font-size: 1em;
+    }
+    .hora{border: solid 0px;
+        position: relative;
+        width: 15%;
+        height: 100%;
+        background: #ffff;
+        font-size: 1em;
+    }
+    
+    .conten_auto{position: relative;
+        width: 33%;
+        height: 21%;
+        display: flex;
+        left: 0%;
+        margin: auto;}
+    
+    .serial{position: relative;
+        width: 20%;
+        display: flex;
+        opacity: 0;
+        margin: 30px;
+    }
+    
+    .serial_tex{
+        position: relative;
+        width: 50%;
+    }
+    
+    .serial_num{
+        position: relative;
+        width: 50%;
+        height: 50%;
+        text-align: center;
+    }
+    
+    .conten_inpu{position: relative;
+        width: 30%;
+        height: 85%;
+        margin: 0 7px;}
+    .auto{position: relative;
+        width: 100%;
+        height: 100%;
+        padding: 0;}
+    
+    .auto::-webkit-inner-spin-button,
+    .auto::-webkit-inner-spin-button{
+    -webkit-appearance: none;
+    margin: 0;
+    }
+    
+    .conten_buscar{position: relative;
+        width: 22%;
+        height: 100%;}
+    .buscar{position: relative;
+        width: 100%;
     height: 100%;
-    background: #ffff;
-}
-.hora{
-    border: solid 0px;
-    position: relative;
-    width: 50%;
-    height: 100%;
-    background: #ffff;
-}
-
-.conten_auto{position: relative;
-    width: 28%;
-    height: 30px;
-    display: flex;
-    left: 72%;}
-
-.serial{
-    position: relative;
-    width: 30%;
-    display: flex;
-    opacity: 0;
-}
-
-.serial_tex{
-    position: relative;
-    width: 50%;
-}
-
-.serial_num{
-    position: relative;
-    width: 50%;
-    height: 50%;
-    text-align: center;
-}
-
-.conten_inpu{position: relative;
-    width: 50%;}
-.auto{position: relative;
-}
-.auto::-webkit-inner-spin-button,
-.auto::-webkit-inner-spin-button{
--webkit-appearance: none;
-margin: 0;
-}
-.conten_buscar{ position: relative;
-    width: 17%}
-.buscar{position: relative;}
-
-
-.conten_butt{position: relative;
-    width: 100%;
-    height: 25px;
-    display: flex;}
-
-.subconten_butt{position: relative;
-    margin: 0 auto;
-    width: 20%;
-    height: 100%;}
-.button{position: relative;
-    width: 32%;
-}
-
-.bloq_c{position: relative;
-    width: 100%;
-    display: flex;
-    margin: 0 0px 0 0;}
-
-.doc_auto{position: relative;
-    width: 48%;
-    height: 80vh;
-    margin: 0px 12px;}
-
-.doc_formu{position: relative;
-    width: 48%;
-    height: 80vh;
-    margin: 0px 5px;}
-
-.conten_print{position: relative;
-    width: 100%;
-    height: 25px;
-    display: flex;}
-
-.print1{position: relative;
-    margin: 0 auto;
-}
-.print2{position: relative;
-    margin: 0 auto;
-    display: none;
-}
-
-.fortmat_auto{position: relative;
-    width: 100%;
-    height: 95%;
-    border: solid 1px;
-    overflow: hidden;
-}
-
-.fortmat_formu{position: relative;
-    width: 100%;
-    height: 95%;
-    border: solid 1px;
-    overflow: hidden;
-}
-
-
-.pag1{width: 200%;
-    height: 200%;
-    transform: scale(0.8);
-    transform-origin: top left}
-
-.pag2{width: 100%;
-    height: 100%;}
+    }
+    
+    
+    .conten_butt{position: relative;
+        width: 34%;
+        height: 29px;
+        margin: auto;
+        display: flex;}
+    
+    .subconten_butt{position: relative;
+        margin: 0 auto;
+        width: 70%;
+        height: 100%;
+    }
+    .button{position: relative;
+        width: 18%;
+        height: 100%;
+    }
+    
+    .bloq_c{position: relative;
+        width: 100%;
+        display: flex;
+        margin: 0 0px 0 0;}
+    
+    .doc_auto{position: relative;
+        width: 48%;
+        height: 80vh;
+        margin: 0px 12px;}
+    
+    .doc_formu{position: relative;
+        width: 48%;
+        height: 80vh;
+        margin: 0px 5px;}
+    
+    .conten_print{position: relative;
+        width: 100%;
+        height: 25px;
+        display: flex;}
+    
+    .print1{position: relative;
+        margin: 0 auto;
+    }
+    .print2{position: relative;
+        margin: 0 auto;
+        display: none;
+    }
+    
+    .fortmat_auto{position: relative;
+        width: 100%;
+        height: 95%;
+        border: solid 1px;
+        overflow: hidden;
+    }
+    
+    .fortmat_formu{position: relative;
+        width: 100%;
+        height: 95%;
+        border: solid 1px;
+        overflow: hidden;
+    }
+    
+    
+    .pag1{width: 200%;
+        height: 200%;
+        transform: scale(0.86);
+        transform-origin: top left}
+    
+    .pag2{width: 100%;
+        height: 100%;}
 
 
 @media print {
@@ -380,6 +493,7 @@ margin: 0;
 .section {
     display: block;
     opacity: 1;
+    width: 100%;
 }
 
 .conten_registro{
@@ -445,63 +559,157 @@ margin: 0;
 
 .bloq_a {position: relative;
     width: 100%;
-    height: 7vh;}
+    height: 6vh;
+    display: flex;
+}
 .conten_img{position: relative;
-    width: 16%;
+    width: 14%;
     height: 100%;}
 .img_logo{position: relative;
     width: 100%;
     height: 100%;}
 
-.bloq_b{position: relative;}
-
-.conten_info{
-display: flex;
-position: absolute;
-margin: 7px;
+.conten_alistar{display: flex;
+    position: relative;
+    right: -58%;
+    width: 26%;
+    height: 100%;
 }
+.alistar{
+    position: relative;
+    width: 100%;
+    height: 67%;
+    display: flex;
+    margin: auto;
+    font-size: 1em;
+}
+.text_alistar{
+margin: auto;
+}
+.alistado_total{
+    position: relative;
+    width: 32px;
+    height: 60%;
+    margin: auto;
+    text-align: center;
+    border: solid 0px;
+    padding: 0;
+    font-size: 17px;
+}
+.alistado_total::-webkit-inner-spin-button,
+.alistado_total::-webkit-inner-spin-button{
+-webkit-appearance: none;
+margin: 0;
+}
+.alistado_dia{
+    position: relative;
+    width: 30px;
+    height: 50%;
+    margin: auto;
+    text-align: center;
+    border: solid 0px;
+    font-size: 17px;
+}
+.alistado_dia::-webkit-inner-spin-button,
+.alistado_dia::-webkit-inner-spin-button{
+-webkit-appearance: none;
+margin: 0;
+}
+
+.bloq_b{position: relative;
+    display: flex;
+    width: 100%;
+    height: 14vh;
+}
+
+.conten_info{display: block;
+    position: relative;
+    margin: 0px;
+    width: 33%;
+}
+
+.conten_fech_solicitud{
+    position: relative;
+    width: 100%;
+    height: 3vh;
+    display: flex;
+    margin: 7px 0px 13px 10px;
+}
+.text_solicitusd{
+    position: relative;
+    width: 35%;
+    font-size: 0.9em;
+    text-align: center;
+}
+.fecha_solicitud{
+    position: relative;
+    width: 25%;
+    height: 100%;
+    border: solid 0px;
+    background: #ffff;
+}
+.hora_solicitud{
+    position: relative;
+    width: 24%;
+    height: 100%;
+    border: solid 0px;
+    background: #ffff;
+}
+
+
 .conten_nomb{
     position: relative;
-    width: 30%;
+    width: 100%;
     height: 3vh;
+    display: flex;
+    margin: 0 0 0 10px;
+}
+.alistado_por{
+    position: relative;
+    width: 25%;
+    font-size: 0.9em;
+    text-align: center;
 }
 .nombre{
 border: solid 0px;
 position: relative;
-    width: 100%;
+    width: 24%;
     height: 100%;
     background: #ffff;
 }
-.conten_fech{
-    position: relative;
-    width: 30%;
+.conten_fech{position: relative;
+    width: 100%;
     height: 3vh;
     display: flex;
+    margin: 0 0 0 10px;
 }
-.fecha{
-    border: solid 0px;
+.fecha_alistado{position: relative;
+    width: 34%;
+    font-size: 0.9em;
+    text-align: center;
+}
+.fecha{border: solid 0px;
     position: relative;
-    width: 50%;
+    width: 25%;
     height: 100%;
     background: #ffff;
 }
-.hora{
-    border: solid 0px;
+.hora{border: solid 0px;
     position: relative;
-    width: 50%;
+    width: 15%;
     height: 100%;
     background: #ffff;
 }
 
 .conten_auto{position: relative;
-    width: 28%;
+    width: 33%;
     height: 30px;
     display: flex;
-    left: 72%;}
+    left: 0%;
+    margin: auto;}
 
-.serial{
-    position: relative;
-    width: 30%;
+.serial{position: relative;
+    width: 20%;
     display: flex;
     opacity: 0;
 }
@@ -519,7 +727,7 @@ position: relative;
 }
 
 .conten_inpu{position: relative;
-    width: 50%;}
+    width: 45%;}
 .auto{position: relative;}
 
 .auto::-webkit-inner-spin-button,
@@ -534,13 +742,14 @@ margin: 0;
 
 
 .conten_butt{position: relative;
-    width: 100%;
+    width: 34%;
     height: 25px;
+    margin: auto;
     display: flex;}
 
 .subconten_butt{position: relative;
     margin: 0 auto;
-    width: 20%;
+    width: 70%;
     height: 100%;
 }
 .button{position: relative;

@@ -38,38 +38,40 @@
         </div>
     </div>
 
+
     <section class="section" id="section">
         <article class="bloq_a">
             <div class="conten_img">
                 <img src="img/LOGO ORIGINAL.png" id="img_logo" class="img_logo">
             </div>
 
+            <div class="conten_alistar">
+                <div class="alistar">
+                    <p class="text_alistar">Solicitudes por alistar: </p><input class="alistado_total" id="alistado_total" type="number" value="" disabled readonly><p class="text_alistar2">(de hoy: <input class="alistado_dia" id="alistado_dia" type="number" value="" disabled readonly>)</p>
+                </div>
+            </div>
+
         </article>
 
         <article class="bloq_b">
-
+                    
                 <div class="conten_info">
+
+                    <div class="conten_fech_solicitud">
+                       <p class="text_solicitusd">Fecha de Solicitud:</p> <input type="datetime" name="" class="fecha_solicitud" id="fecha_solicitud" readonly disabled>
+                        <input type="datetime" name="" class="hora_solicitud" id="hora_solicitud" readonly disabled>
+                    </div>
+
                     <div class="conten_nomb">
-                        <input type="text" class="nombre" id="nombre_responsable" readonly disabled>
+                        <p class="alistado_por">Alistado Por:</p><input type="text" class="nombre" id="nombre_responsable" readonly disabled>
                     </div>
                     <div class="conten_fech">
-                        <input type="datetime" name="" class="fecha" id="fecha_responsable" readonly disabled>
+                        <p class="fecha_alistado">Fecha de alistado:</p><input type="datetime" name="" class="fecha" id="fecha_responsable" readonly disabled>
                         <input type="datetime" name="" class="hora" id="hora_responsable" readonly disabled>
                     </div>
                     
                 </div>
-                <div class="conten_auto">
-                    <div class="serial">
-                        <p class="serial_tex">Serial</p>
-                        <input type="number" name="id" class="serial_num" id="serial" readonly>
-                    </div>
-                    <div class="conten_inpu">
-                        <input type="number" name="auto" class="auto" id="num_auto" >
-                    </div>
-                    <div class="conten_buscar">
-                        <button class="buscar" id="buscar_auto" onclick="generarURL()">Buscar</button>
-                    </div>
-                </div>
+
 
                 <div class="conten_butt">
 
@@ -85,16 +87,26 @@
 
                 </div>
 
+
+                <div class="conten_auto">
+                    <div class="serial">
+                        <p class="serial_tex">Serial</p>
+                        <input type="number" name="id" class="serial_num" id="serial" readonly>
+                    </div>
+                    <div class="conten_inpu">
+                        <input type="number" name="auto" class="auto" id="num_auto" >
+                    </div>
+                    <div class="conten_buscar">
+                        <button class="buscar" id="buscar_auto" onclick="generarURL()">Buscar</button>
+                    </div>
+                </div>
+
         </article>
 
 
         <article class="bloq_c" id="bloq_c">
 
             <div class="doc_auto">
-                
-                <div class="conten_print">
-                    <!-- <button class="print1" id="imprimir_auto">imprimir</button> -->
-                </div>
 
                 <div class="fortmat_auto" id="fortmat_auto">
                     <iframe class="pag1" id="myIframe" src="" frameborder="0" width="500" height="500"></iframe>
@@ -103,9 +115,6 @@
             </div>
     
             <div class="doc_formu">
-                <div class="conten_print">
-                    <!-- <button class="print2" id="imprimir_formu">imprimir</button> -->
-                </div>
     
                 <div class="fortmat_formu" id="fortmat_formu">
                     <iframe class="pag2" id="myIframe2" src="" frameborder="0"></iframe>
