@@ -4,6 +4,9 @@ let fecha_responsable = document.getElementById('fecha_responsable').value;
 setTimeout(function buscar_auto() {
 
   document.getElementById('buscar_primero').addEventListener('click', buscar_auto);
+  
+  numero_solicitudes()
+  numero_solicitudes_diarias()
 
   fetch('/consulta')
     .then(response => response.json())
@@ -12,19 +15,28 @@ setTimeout(function buscar_auto() {
       const radicado = data.numero_radicado;
       const nombre = data.alistado_por; 
       const fecha = data.alistamiento;
+      const por_alistaer = data.datetime;
 
       const fechaHora = new Date(fecha);
-
       const hora = fechaHora.getHours();
       const minutos = fechaHora.getMinutes();
       const segundos = fechaHora.getSeconds();
       const horaFormateada = hora + ":" + minutos + ":" + segundos;
-
       const dia = fechaHora.getDate();
       const mes = fechaHora.getMonth() + 1;
       const anio = fechaHora.getFullYear();
       const fechaFormateada = dia + "/" + mes + "/" + anio;
 
+      const fechaHora2 = new Date(por_alistaer);
+      const hora2 = fechaHora2.getHours();
+      const minutos2 = fechaHora2.getMinutes();
+      const segundos2 = fechaHora2.getSeconds();
+      const horaFormateada2 = hora2 + ":" + minutos2 + ":" + segundos2;
+      const dia2 = fechaHora2.getDate();
+      const mes2 = fechaHora2.getMonth() + 1;
+      const anio2 = fechaHora2.getFullYear();
+      const fechaFormateada2 = dia2 + "/" + mes2 + "/" + anio2;
+      
       if (nombre == null && fecha == null) {
 
       document.getElementById('nombre_responsable').value = "No Impreso";
@@ -34,6 +46,10 @@ setTimeout(function buscar_auto() {
       document.getElementById('nombre_responsable').value = nombre;
       document.getElementById('fecha_responsable').value = fechaFormateada;
       document.getElementById('hora_responsable').value = horaFormateada;
+      document.getElementById('fecha_solicitud').value = fechaFormateada2;
+      document.getElementById('hora_solicitud').value = horaFormateada2;
+
+
       }
 
 
@@ -113,24 +129,26 @@ function impri(){
   document.getElementById('btn_aceptar').addEventListener('click', aceptar);
 
   const inputcode = document.getElementById('id_cedu');
-  inputcode.addEventListener('input', function(){
+
+  function inputHandler() {
     const valor = inputcode.value;
-    if(/^\d{3}$/.test(valor)){
+    if (/^\d{3}$/.test(valor)) {
       aceptar();
+      inputcode.removeEventListener('input', inputHandler);
     }
-  })
+  }
+  
+  inputcode.addEventListener('input', inputHandler);
+  
+let impreso = false;
 
-  let impreso = false;
+function aceptar() {
+  const id_cedula = document.getElementById('id_cedu').value;
+  const auto = document.getElementById('num_auto').value;
 
-  function aceptar(){
-
-    const id_cedula = document.getElementById('id_cedu').value;
-    const auto = document.getElementById('num_auto').value;
-
-    fetch(`/validacion?id_cedula=${id_cedula}`)
-      .then(response => response.json())
-      .then(data => {
-
+  fetch(`/validacion?id_cedula=${id_cedula}`)
+    .then(response => response.json())
+    .then(data => {
       const modal = document.getElementById('conten_registro');
       const sect = document.getElementById('section');
       const text_error = document.getElementById('text_error');
@@ -140,32 +158,27 @@ function impri(){
       const nombre = data.nombre;
 
       if (id_cedula == id_cedu) {
-
         modal.style.display = 'none';
         sect.style.opacity = '1';
 
         fetch(`/update?nombre=${nombre}&auto=${auto}`)
-        .then(response => response.json());
-        
-        if (!impreso) {
-          if (impreso === false) {
-            impreso = true;
-            window.print();
-          }
-        }
-      
-      }else{
+          .then(response => response.json());
 
+        if (!impreso) {
+          window.onafterprint = () => {
+            impreso = true;
+            window.onafterprint = null; // Limpiar el evento de impresión después de su ejecución
+          };
+          window.print();
+        }
+      } else {
         text.style.display = 'none';
         text_error.style.display = 'block';
         id_cedu.value = "";
-      
       }
-
     });
+}
 
-
-  };
 
   document.getElementById('btn_cancelar').addEventListener('click', cancelar);
 
@@ -205,6 +218,9 @@ function buscar_siguiente() {
 
   const id_serie = document.getElementById('serial').value;
 
+  numero_solicitudes()
+  numero_solicitudes_diarias()
+
   // Realizar la solicitud POST al servidor
   fetch(`/consulta?id_serie=${id_serie}`)
   .then(response => response.json())
@@ -214,6 +230,7 @@ function buscar_siguiente() {
     const radicado = data.numero_radicado;
     const nombre = data.alistado_por; 
     const fecha = data.alistamiento;
+    const por_alistaer = data.datetime;
 
     document.getElementById('serial').value = id;
     document.getElementById('num_auto').value = radicado;
@@ -224,11 +241,20 @@ function buscar_siguiente() {
       const minutos = fechaHora.getMinutes();
       const segundos = fechaHora.getSeconds();
       const horaFormateada = hora + ":" + minutos + ":" + segundos;
-
       const dia = fechaHora.getDate();
       const mes = fechaHora.getMonth() + 1;
       const anio = fechaHora.getFullYear();
       const fechaFormateada = dia + "/" + mes + "/" + anio;
+
+      const fechaHora2 = new Date(por_alistaer);
+      const hora2 = fechaHora2.getHours();
+      const minutos2 = fechaHora2.getMinutes();
+      const segundos2 = fechaHora2.getSeconds();
+      const horaFormateada2 = hora2 + ":" + minutos2 + ":" + segundos2;
+      const dia2 = fechaHora2.getDate();
+      const mes2 = fechaHora2.getMonth() + 1;
+      const anio2 = fechaHora2.getFullYear();
+      const fechaFormateada2 = dia2 + "/" + mes2 + "/" + anio2;
 
       if (nombre == null && fecha == null) {
 
@@ -241,6 +267,8 @@ function buscar_siguiente() {
       document.getElementById('nombre_responsable').value = nombre;
       document.getElementById('fecha_responsable').value = fechaFormateada;
       document.getElementById('hora_responsable').value = horaFormateada;
+      document.getElementById('fecha_solicitud').value = fechaFormateada2;
+      document.getElementById('hora_solicitud').value = horaFormateada2;
       }
 
     const a = radicado.slice(-8);
@@ -310,6 +338,9 @@ function buscar_atras() {
 
   const id_serie = document.getElementById('serial').value;
 
+  numero_solicitudes()
+  numero_solicitudes_diarias()
+
   // Realizar la solicitud POST al servidor
   fetch(`/consulta_atras?id_serie=${id_serie}`)
   .then(response => response.json())
@@ -319,6 +350,7 @@ function buscar_atras() {
     const radicado = data.numero_radicado;
     const nombre = data.alistado_por; 
     const fecha = data.alistamiento;
+    const por_alistaer = data.datetime;
 
     document.getElementById('serial').value = id;
     document.getElementById('num_auto').value = radicado;
@@ -329,11 +361,20 @@ function buscar_atras() {
       const minutos = fechaHora.getMinutes();
       const segundos = fechaHora.getSeconds();
       const horaFormateada = hora + ":" + minutos + ":" + segundos;
-
       const dia = fechaHora.getDate();
       const mes = fechaHora.getMonth() + 1;
       const anio = fechaHora.getFullYear();
       const fechaFormateada = dia + "/" + mes + "/" + anio;
+
+      const fechaHora2 = new Date(por_alistaer);
+      const hora2 = fechaHora2.getHours();
+      const minutos2 = fechaHora2.getMinutes();
+      const segundos2 = fechaHora2.getSeconds();
+      const horaFormateada2 = hora2 + ":" + minutos2 + ":" + segundos2;
+      const dia2 = fechaHora2.getDate();
+      const mes2 = fechaHora2.getMonth() + 1;
+      const anio2 = fechaHora2.getFullYear();
+      const fechaFormateada2 = dia2 + "/" + mes2 + "/" + anio2;
 
       if (nombre == null && fecha == null) {
 
@@ -346,6 +387,8 @@ function buscar_atras() {
       document.getElementById('nombre_responsable').value = nombre;
       document.getElementById('fecha_responsable').value = fechaFormateada;
       document.getElementById('hora_responsable').value = horaFormateada;
+      document.getElementById('fecha_solicitud').value = fechaFormateada2;
+      document.getElementById('hora_solicitud').value = horaFormateada2;
       }
 
     const a = radicado.slice(-8);
@@ -399,9 +442,16 @@ fetch("https://genesis.cajacopieps.com/api/api_qr.php", requestOptions)
 
 };
 
+
+/* -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- */
+
+
 function buscar_ultimo() {
 
   const id_serie = document.getElementById('serial').value;
+
+  numero_solicitudes()
+  numero_solicitudes_diarias()
 
   // Realizar la solicitud POST al servidor
   fetch(`/consulta_ultima?id_serie=${id_serie}`)
@@ -412,6 +462,7 @@ function buscar_ultimo() {
     const radicado = data.numero_radicado;
     const nombre = data.alistado_por; 
     const fecha = data.alistamiento;
+    const por_alistaer = data.datetime;
 
     document.getElementById('serial').value = id;
     document.getElementById('num_auto').value = radicado;
@@ -422,11 +473,20 @@ function buscar_ultimo() {
       const minutos = fechaHora.getMinutes();
       const segundos = fechaHora.getSeconds();
       const horaFormateada = hora + ":" + minutos + ":" + segundos;
-
       const dia = fechaHora.getDate();
       const mes = fechaHora.getMonth() + 1;
       const anio = fechaHora.getFullYear();
       const fechaFormateada = dia + "/" + mes + "/" + anio;
+
+      const fechaHora2 = new Date(por_alistaer);
+      const hora2 = fechaHora2.getHours();
+      const minutos2 = fechaHora2.getMinutes();
+      const segundos2 = fechaHora2.getSeconds();
+      const horaFormateada2 = hora2 + ":" + minutos2 + ":" + segundos2;
+      const dia2 = fechaHora2.getDate();
+      const mes2 = fechaHora2.getMonth() + 1;
+      const anio2 = fechaHora2.getFullYear();
+      const fechaFormateada2 = dia2 + "/" + mes2 + "/" + anio2;
 
       if (nombre == null && fecha == null) {
 
@@ -439,6 +499,8 @@ function buscar_ultimo() {
       document.getElementById('nombre_responsable').value = nombre;
       document.getElementById('fecha_responsable').value = fechaFormateada;
       document.getElementById('hora_responsable').value = horaFormateada;
+      document.getElementById('fecha_solicitud').value = fechaFormateada2;
+      document.getElementById('hora_solicitud').value = horaFormateada2;
       }
 
     const a = radicado.slice(-8);
@@ -491,3 +553,35 @@ fetch("https://genesis.cajacopieps.com/api/api_qr.php", requestOptions)
 
 
 };
+
+
+/* -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- */
+
+
+function numero_solicitudes() {
+  fetch('/por_alistar')
+  .then(response => response.json())
+  .then(data => {
+
+    const alistado = data.count;
+
+    document.getElementById('alistado_total').value = alistado;
+
+  })
+}
+
+setInterval(numero_solicitudes, 20000);
+
+function numero_solicitudes_diarias() {
+  fetch('/por_alistar_dia')
+  .then(response => response.json())
+  .then(data => {
+
+    const alistado = data.count;
+
+    document.getElementById('alistado_dia').value = alistado;
+
+  })
+}
+
+setInterval(numero_solicitudes_diarias, 20000);
