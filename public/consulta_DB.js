@@ -1,5 +1,10 @@
 let nombre_responsable = document.getElementById('nombre_responsable').value;
 let fecha_responsable = document.getElementById('fecha_responsable').value;
+let isChecked = false;
+
+document.getElementById('filtro_por_alistar').addEventListener('change', function() {
+  isChecked = this.checked;
+});
 
 setTimeout(function buscar_auto() {
 
@@ -8,7 +13,7 @@ setTimeout(function buscar_auto() {
   numero_solicitudes()
   numero_solicitudes_diarias()
 
-  fetch('/consulta')
+  fetch(`/consulta?isChecked=${isChecked}`)
     .then(response => response.json())
     .then(data => {
       const id = data.id;
@@ -222,7 +227,7 @@ function buscar_siguiente() {
   numero_solicitudes_diarias()
 
   // Realizar la solicitud POST al servidor
-  fetch(`/consulta?id_serie=${id_serie}`)
+  fetch(`/consulta?id_serie=${id_serie}&isChecked=${isChecked}`)
   .then(response => response.json())
   .then(data => {
     // Hacer algo con los datos recibidos
@@ -342,7 +347,7 @@ function buscar_atras() {
   numero_solicitudes_diarias()
 
   // Realizar la solicitud POST al servidor
-  fetch(`/consulta_atras?id_serie=${id_serie}`)
+  fetch(`/consulta_atras?id_serie=${id_serie}&isChecked=${isChecked}`)
   .then(response => response.json())
   .then(data => {
     // Hacer algo con los datos recibidos
@@ -454,7 +459,7 @@ function buscar_ultimo() {
   numero_solicitudes_diarias()
 
   // Realizar la solicitud POST al servidor
-  fetch(`/consulta_ultima?id_serie=${id_serie}`)
+  fetch(`/consulta_ultima?id_serie=${id_serie}&isChecked=${isChecked}`)
   .then(response => response.json())
   .then(data => {
     // Hacer algo con los datos recibidos

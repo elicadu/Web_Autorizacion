@@ -30,8 +30,18 @@ client.connect();
 // Ruta para obtener los datos
 app.get('/consulta', async (req, res) => {
   const id_serie = req.query.id_serie || 0;
+  const isChecked = req.query.isChecked === 'true';
   try {
-    const query = "SELECT base_radicacion.id, base_radicacion.numero_radicado, base_radicacion.alistamiento, base_radicacion.alistado_por, base_radicacion.datetime FROM base_radicacion LEFT JOIN domicilios ON base_radicacion.numero_radicado = domicilios.autorizacion WHERE base_radicacion.acta_entrega IS NULL AND domicilios.autorizacion IS NULL AND base_radicacion.id > $1 ORDER BY base_radicacion.datetime ASC LIMIT 1";
+    
+    let query = "SELECT base_radicacion.id, base_radicacion.numero_radicado, base_radicacion.alistamiento, base_radicacion.alistado_por, base_radicacion.datetime FROM base_radicacion LEFT JOIN domicilios ON base_radicacion.numero_radicado = domicilios.autorizacion WHERE base_radicacion.acta_entrega IS NULL AND domicilios.autorizacion IS NULL AND base_radicacion.id > $1";
+
+  // Verificar el estado del checkbox y agregar la condición correspondiente
+  if (isChecked) {
+    query += " AND base_radicacion.alistado_por IS NULL";
+  }
+
+  query += " ORDER BY base_radicacion.datetime ASC LIMIT 1";
+  
     const result = await client.query(query, [id_serie]);
     const datos = result.rows[0]; // Suponiendo que solo quieres el primer resultado de la consulta
     
@@ -44,8 +54,17 @@ app.get('/consulta', async (req, res) => {
 
 app.get('/consulta_atras', async (req, res) => {
   const id_serie = req.query.id_serie || 0;
+  const isChecked = req.query.isChecked === 'true';
+
   try {
-    const query = "SELECT base_radicacion.id, base_radicacion.numero_radicado, base_radicacion.alistamiento, base_radicacion.alistado_por, base_radicacion.datetime FROM base_radicacion LEFT JOIN domicilios ON base_radicacion.numero_radicado = domicilios.autorizacion WHERE base_radicacion.acta_entrega IS NULL AND domicilios.autorizacion IS NULL AND base_radicacion.id < $1 ORDER BY base_radicacion.datetime DESC LIMIT 1";
+    let query = "SELECT base_radicacion.id, base_radicacion.numero_radicado, base_radicacion.alistamiento, base_radicacion.alistado_por, base_radicacion.datetime FROM base_radicacion LEFT JOIN domicilios ON base_radicacion.numero_radicado = domicilios.autorizacion WHERE base_radicacion.acta_entrega IS NULL AND domicilios.autorizacion IS NULL AND base_radicacion.id < $1";
+
+    if(isChecked){
+      query += " AND base_radicacion.alistado_por IS NULL"
+    }
+
+    query += " ORDER BY base_radicacion.datetime DESC LIMIT 1"
+
     const result = await client.query(query, [id_serie]);
     const datos = result.rows[0];
 
@@ -58,8 +77,16 @@ app.get('/consulta_atras', async (req, res) => {
 
 app.get('/consulta_ultima', async (req, res) => {
   const id_serie = req.query.id_serie || 0;
+  const isChecked = req.query.isChecked === 'true';
   try {
-    const query = "SELECT base_radicacion.id, base_radicacion.numero_radicado, base_radicacion.alistamiento, base_radicacion.alistado_por, base_radicacion.datetime FROM base_radicacion LEFT JOIN domicilios ON base_radicacion.numero_radicado = domicilios.autorizacion WHERE base_radicacion.acta_entrega IS NULL AND domicilios.autorizacion IS NULL AND base_radicacion.id > $1 ORDER BY base_radicacion.datetime DESC LIMIT 1";
+    let query = "SELECT base_radicacion.id, base_radicacion.numero_radicado, base_radicacion.alistamiento, base_radicacion.alistado_por, base_radicacion.datetime FROM base_radicacion LEFT JOIN domicilios ON base_radicacion.numero_radicado = domicilios.autorizacion WHERE base_radicacion.acta_entrega IS NULL AND domicilios.autorizacion IS NULL AND base_radicacion.id > $1";
+
+    if (isChecked){
+      query += " AND base_radicacion.alistado_por IS NULL"
+    }
+
+    query += " ORDER BY base_radicacion.datetime DESC LIMIT 1"
+
     const result = await client.query(query, [id_serie]);
     const datos = result.rows[0];
 
@@ -129,7 +156,7 @@ app.get('/por_alistar', async (req, res) => {
 app.get('/por_alistar_dia', async (req, res) => {
   
   try {
-    const query = "select COUNT(*) from  base_radicacion left join domicilios on base_radicacion.numero_radicado = domicilios.autorizacion  where base_radicacion.acta_entrega is null and domicilios.acta is null and alistado_por is null and base_radicacion.datetime::date = CURRENT_DATE";
+    const query = "select COUNT(*) from  base_radicacion left join domicilios on base_radicacion.numero_radicado = domicilios.autorizacion where base_radicacion.acta_entrega is null and domicilios.acta is null and alistado_por is null and base_radicacion.datetime::date = CURRENT_DATE";
     const result = await client.query(query, []);
     const datos = result.rows[0]; // Suponiendo que solo quieres el primer resultado de la consulta
     
