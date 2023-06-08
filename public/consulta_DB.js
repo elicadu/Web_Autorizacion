@@ -285,8 +285,6 @@ function buscar_siguiente() {
 
     iframe_auto.src = url;
 
-    console.log(url);
-
 const myHeaders = new Headers();
 myHeaders.append("Content-Type", "text/plain");
 myHeaders.append("Cookie", "PHPSESSID=tupmb6mo9amo6sathg5q47536i");

@@ -146,7 +146,6 @@ app.get('/por_alistar', async (req, res) => {
     const datos = result.rows[0]; // Suponiendo que solo quieres el primer resultado de la consulta
     
     res.json(datos);
-    console.log(datos);
   } catch (error) {        
     console.error('Error:', error);
     res.status(500).json({ error: 'Error al obtener los datos' });
@@ -161,7 +160,21 @@ app.get('/por_alistar_dia', async (req, res) => {
     const datos = result.rows[0]; // Suponiendo que solo quieres el primer resultado de la consulta
     
     res.json(datos);
-    console.log(datos);
+  } catch (error) {        
+    console.error('Error:', error);
+    res.status(500).json({ error: 'Error al obtener los datos' });
+  }
+});
+
+app.get('/consulta_api', async (req, res) => {
+  const autorizacion = req.query.auto || 0 ;
+  
+  try {
+    const query = "Select datetime, alistamiento, alistado_por from base_radicacion where numero_radicado = $1";
+    const result = await client.query(query, [autorizacion]);
+    const datos = result.rows[0]; // Suponiendo que solo quieres el primer resultado de la consulta
+    
+    res.json(datos);
   } catch (error) {        
     console.error('Error:', error);
     res.status(500).json({ error: 'Error al obtener los datos' });
