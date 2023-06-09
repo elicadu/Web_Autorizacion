@@ -51,11 +51,9 @@ setTimeout(function buscar_auto() {
       document.getElementById('nombre_responsable').value = nombre;
       document.getElementById('fecha_responsable').value = fechaFormateada;
       document.getElementById('hora_responsable').value = horaFormateada;
+      }
       document.getElementById('fecha_solicitud').value = fechaFormateada2;
       document.getElementById('hora_solicitud').value = horaFormateada2;
-
-
-      }
 
 
       document.getElementById('serial').value = id;
@@ -272,9 +270,9 @@ function buscar_siguiente() {
       document.getElementById('nombre_responsable').value = nombre;
       document.getElementById('fecha_responsable').value = fechaFormateada;
       document.getElementById('hora_responsable').value = horaFormateada;
+      }
       document.getElementById('fecha_solicitud').value = fechaFormateada2;
       document.getElementById('hora_solicitud').value = horaFormateada2;
-      }
 
     const a = radicado.slice(-8);
     const b = radicado.slice(0, -8);
@@ -390,9 +388,9 @@ function buscar_atras() {
       document.getElementById('nombre_responsable').value = nombre;
       document.getElementById('fecha_responsable').value = fechaFormateada;
       document.getElementById('hora_responsable').value = horaFormateada;
+      }
       document.getElementById('fecha_solicitud').value = fechaFormateada2;
       document.getElementById('hora_solicitud').value = horaFormateada2;
-      }
 
     const a = radicado.slice(-8);
     const b = radicado.slice(0, -8);
@@ -503,8 +501,10 @@ function buscar_ultimo() {
       document.getElementById('fecha_responsable').value = fechaFormateada;
       document.getElementById('hora_responsable').value = horaFormateada;
       document.getElementById('fecha_solicitud').value = fechaFormateada2;
-      document.getElementById('hora_solicitud').value = horaFormateada2;
+    
       }
+      document.getElementById('fecha_solicitud').value = fechaFormateada2;
+      document.getElementById('hora_solicitud').value = horaFormateada2;
 
     const a = radicado.slice(-8);
     const b = radicado.slice(0, -8);
