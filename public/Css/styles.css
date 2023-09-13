@@ -488,7 +488,7 @@ h1, h2, h3, h4, h5, h6, p, a, span, strong, div, form, select, option, textarea,
     
     
     .pag1{width: 150%;
-        height: 160%;
+        height: 200%;
         transform: scale(0.66);
         transform-origin: top left;
         right: -10px;
