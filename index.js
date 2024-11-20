@@ -14,10 +14,10 @@ app.get('/', (req, res) => {
 
 // Configuración de la conexión a la base de datos
 const client = new Client({
-  user: "xupuufxtqinskd",
-  host: "ec2-52-22-136-117.compute-1.amazonaws.com",
-  password: "c8f36e06dda45351374f252d25579eee3de9ef362c3429ed29398e5004bcca48",
-  database: "d4gh2v3i5p549d",
+  user: "uvik2gcskf67l",
+  host: "c6al47t7hmv072.cluster-czrs8kj4isg7.us-east-1.rds.amazonaws.com",
+  password: "pa2c611e78dc74dd7d9b87b9205b7a201f3d1fa81d7b2451e802da3f0c4e92d09",
+  database: "d7mt6q4m8gap80",
   port: 5432,
   ssl: {
     rejectUnauthorized: false
